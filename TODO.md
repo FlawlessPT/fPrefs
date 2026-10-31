@@ -1,3 +1,3 @@
 # TODO fPrefs
 
-- Menu `/prefs` e comando: tarefa 3 do plano `docs/superpowers/plans/2026-10-31-fprefs-drop.md`.
+- (vazio) A migração do chat padrão do fChat está feita; a tabela antiga `fchat_prefs` ficou na BD sem uso (as escolhas antigas não foram copiadas).
