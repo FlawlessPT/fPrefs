@@ -9,7 +9,9 @@ import pt.flawless.fapi.database.Databases;
 import pt.flawless.fapi.enums.EMessageTypeEnum;
 import pt.flawless.fapi.logs.FConsoleLogger;
 import pt.flawless.fapi.prefs.PrefsApi;
+import pt.flawless.fprefs.commands.PrefsCommand;
 import pt.flawless.fprefs.listeners.PrefsListener;
+import pt.flawless.fprefs.menu.PrefsMenuListener;
 import pt.flawless.fprefs.service.PrefsService;
 import pt.flawless.fprefs.storage.SqlPrefsRepository;
 
@@ -27,6 +29,8 @@ public class FPrefs extends JavaPlugin {
             PrefsService service = new PrefsService(new SqlPrefsRepository(database), this::logError);
             getServer().getServicesManager().register(PrefsApi.class, service, this, ServicePriority.Normal);
             Bukkit.getPluginManager().registerEvents(new PrefsListener(service), this);
+            Bukkit.getPluginManager().registerEvents(new PrefsMenuListener(this, service), this);
+            getCommand("prefs").setExecutor(new PrefsCommand(service));
 
             // Jogadores já online (/reload) não passam pelo PlayerJoinEvent.
             for (Player p : Bukkit.getOnlinePlayers()) service.load(p.getUniqueId());
