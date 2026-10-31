@@ -1,0 +1,10 @@
+name: fPrefs
+main: pt.flawless.fprefs.FPrefs
+api-version: '1.21'
+description: Preferências de jogador
+version: 1.0
+depend: [fAPI, fDatabase]
+commands:
+  prefs:
+    description: Abre o menu de preferências
+    usage: /prefs
